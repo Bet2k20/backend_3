@@ -28,12 +28,12 @@ let connectedPlayers = new Set();
 app.post('/api/game/start', (req, res) => {
   try {
     const { user } = req.body;
-    
-    // Kiểm tra phải là LanAnhT02
-    if (user.username !== 'LanAnhT02' || user.fullname !== 'Lan Anh') {
+
+    // Kiểm tra phải là MinhMinhT02
+    if (user.username !== 'MinhMinhT02' || user.fullname !== 'Minh Minh') {
       return res.status(403).json({
         success: false,
-        message: 'Chỉ LanAnhT02 mới có quyền bắt đầu game!'
+        message: 'Chỉ MinhMinhT02 mới có quyền bắt đầu game!'
       });
     }
     
@@ -51,9 +51,9 @@ app.post('/api/game/start', (req, res) => {
     // connectedPlayers sẽ được giữ lại để theo dõi những ai đã kết nối.
     // Nếu muốn reset hoàn toàn danh sách người chơi, có thể uncomment dòng dưới.
     // connectedPlayers.clear(); 
-    
-    console.log('🎮 Game đã bắt đầu bởi LanAnhT02');
-    
+
+    console.log('🎮 Game đã bắt đầu bởi MinhMinhT02');
+
     res.json({
       success: true,
       message: 'Game đã bắt đầu!',
@@ -77,16 +77,16 @@ app.post('/api/game/end', (req, res) => {
     if (user.username !== 'LanAnhT02' || user.fullname !== 'Lan Anh') {
       return res.status(403).json({
         success: false,
-        message: 'Chỉ LanAnhT02 mới có quyền kết thúc game!'
+        message: 'Chỉ MinhMinhT02 mới có quyền kết thúc game!'
       });
     }
     
     // Kết thúc game
     gameSession.isActive = false;
     gameSession.endTime = new Date().toISOString();
-    
-    console.log('🏁 Game đã kết thúc bởi LanAnhT02');
-    
+
+    console.log('🏁 Game đã kết thúc bởi MinhMinhT02');
+
     res.json({
       success: true,
       message: 'Game đã kết thúc!',
@@ -251,8 +251,8 @@ app.get('/', (req, res) => {
   res.json({
     message: 'Multiplayer Drag & Drop Game Backend API',
     endpoints: {
-      'POST /api/game/start': 'LanAnhT02 bắt đầu game',
-      'POST /api/game/end': 'LanAnhT02 kết thúc game',
+      'POST /api/game/start': 'MinhMinhT02 bắt đầu game',
+      'POST /api/game/end': 'MinhMinhT02 kết thúc game',
       'GET /api/game/status': 'Kiểm tra trạng thái game',
       'POST /api/player/connect': 'Theo dõi người chơi đăng nhập',
       'GET /api/players/connected': 'Lấy danh sách người chơi đã kết nối',
