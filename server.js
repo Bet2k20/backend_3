@@ -74,7 +74,7 @@ app.post('/api/game/end', (req, res) => {
     const { user } = req.body;
     
     // Kiểm tra phải là LanAnhT02
-    if (user.username !== 'LanAnhT02' || user.fullname !== 'Lan Anh') {
+    if (user.username !== 'MinhMinhT02' || user.fullname !== 'Minh Minh') {
       return res.status(403).json({
         success: false,
         message: 'Chỉ MinhMinhT02 mới có quyền kết thúc game!'
